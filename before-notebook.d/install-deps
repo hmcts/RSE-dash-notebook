@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+# Install additional dependencies used in the scripts
+pip install \
+    azure-cosmos

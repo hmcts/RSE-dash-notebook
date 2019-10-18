@@ -11,7 +11,6 @@ notebook:
 		-e masterKey=$(masterKey) \
 		-e databaseId=$(databaseId) \
 		-e containerId=$(containerId) \
-		-e http_proxy=$(http_proxy) \
-		-e https_proxy=$(https_proxy) \
 		-v $(PWD)/workspace:/home/jovyan/work \
+		-v $(PWD)/before-notebook.d:/usr/local/bin/before-notebook.d/ \
 		jupyter/scipy-notebook
