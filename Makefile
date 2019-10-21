@@ -13,8 +13,8 @@ include .env
 	-v $(PWD)/workspace:/home/jovyan/work \
 	-v $(PWD)/before-notebook.d:/usr/local/bin/before-notebook.d/
 
-.PHONY: doc
-doc:
+.PHONY: docs
+docs:
 	@docker run \
 		$(.common_docker_args) \
 		-v $(PWD)/docs:/home/jovyan/docs \

@@ -3,10 +3,9 @@
 # Find all jupyter reports and
 # convert them into html documents
 
-find ./work \
-    -maxdepth 1 \
-    -type f \
-    | xargs -d '\n' \
-        jupyter nbconvert \
+jupyter nbconvert \
         --to html \
         --output-dir='./docs' \
+        --TemplateExporter.exclude_input=True \
+        --TemplateExporter.exclude_input_prompt=True \
+        ./work/*.ipynb

@@ -14,7 +14,11 @@ This projects contains a Jupyter notebook including documents related to softwar
 
 To start the notebook run `make notebook`.
 
-In the notebook, use the `work/` folder to store or modify files
+In the notebook, use the `work/` folder to store or modify files.
+
+### Generate reports
+
+`make docs` will export simplified report in the `/docs` folder.
 
 ## License
 
