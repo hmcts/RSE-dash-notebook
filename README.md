@@ -15,3 +15,7 @@ This projects contains a Jupyter notebook including documents related to softwar
 To start the notebook run `make notebook`.
 
 In the notebook, use the `work/` folder to store or modify files
+
+## License
+
+Project licensed under the MIT License - see LICENSE.md for details
