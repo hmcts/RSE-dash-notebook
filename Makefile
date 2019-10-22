@@ -15,6 +15,7 @@ include .env
 
 .PHONY: docs
 docs:
+	@rm -rf docs/*
 	@docker run \
 		$(.common_docker_args) \
 		-v $(PWD)/docs:/home/jovyan/docs \
