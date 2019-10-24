@@ -1,7 +1,7 @@
 include .env
 
 .DEFAULT_GOAL := notebook
-
+.image_tag = hmcts/jupyter-notebook
 .docker_port = 8888
 .common_docker_args = \
 	--rm \
@@ -10,21 +10,26 @@ include .env
 	-e masterKey=$(masterKey) \
 	-e databaseId=$(databaseId) \
 	-e containerId=$(containerId) \
-	-v $(PWD)/workspace:/home/jovyan/work \
-	-v $(PWD)/before-notebook.d:/usr/local/bin/before-notebook.d/
+	-v $(PWD)/workspace:/home/jovyan/work
 
-.PHONY: docs
-docs:
+.PHONY: jupyter-image ## Build the Jupyter Notebook image
+jupyter-image:
+	@docker build \
+		-t $(.image_tag) \
+		.
+
+.PHONY: docs ## Regenerate the docs
+docs: jupyter-image
 	@rm -rf docs/*
 	@docker run \
 		$(.common_docker_args) \
 		-v $(PWD)/docs:/home/jovyan/docs \
 		-v $(PWD)/scripts:/home/jovyan/scripts \
-		jupyter/scipy-notebook ./scripts/export-doc
+		$(.image_tag) ./scripts/export-doc
 
-.PHONY: notebook
-notebook:
+.PHONY: notebook ## Start the notebook
+notebook: jupyter-image
 	@docker run \
 		-p $(.docker_port):8888 \
 		$(.common_docker_args) \
-		jupyter/scipy-notebook
+		$(.image_tag)
