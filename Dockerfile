@@ -7,6 +7,7 @@ RUN \
     "plotly==4.2.1" \
     "jupyterlab==1.0" \
     "ipywidgets==7.5" \
+    "notebook>=5.3" \
     # Avoid "JavaScript heap out of memory" errors during extension installation
     && export NODE_OPTIONS=--max-old-space-size=4096 \
     && npm set strict-ssl false \

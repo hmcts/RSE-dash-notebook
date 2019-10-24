@@ -14,6 +14,12 @@ This projects contains a Jupyter notebook including documents related to softwar
 
 To start the notebook run `make notebook`.
 
+_Notice_: the initial image build may take a looooong time on this step so be patient:
+
+```
+[LabBuildApp] Building jupyterlab assets
+```
+
 In the notebook, use the `work/` folder to store or modify files.
 
 ### Generate reports
