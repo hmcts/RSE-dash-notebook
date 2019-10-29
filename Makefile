@@ -10,7 +10,7 @@ include .env
 	-e masterKey=$(masterKey) \
 	-e databaseId=$(databaseId) \
 	-e containerId=$(containerId) \
-	-v $(PWD)/workspace:/home/jovyan/work
+	-v $(PWD)/work:/home/jovyan/work
 
 .PHONY: jupyter-image ## Build the Jupyter Notebook image
 jupyter-image:

@@ -3,9 +3,19 @@
 # Find all jupyter reports and
 # convert them into html documents
 
-jupyter nbconvert \
+function expand_in_out() {
+    filename=$1
+    filepath=$(dirname "$1")
+    filepath_without_root=${filepath#work}
+    new_output_dir="docs$filepath_without_root"
+
+    jupyter nbconvert \
         --to html \
-        --output-dir='./docs' \
+        --output-dir=$new_output_dir \
         --TemplateExporter.exclude_input=True \
         --TemplateExporter.exclude_input_prompt=True \
-        ./work/*.ipynb
+        $filename
+}
+
+export -f expand_in_out
+find work/**/*.ipynb work/*.ipynb | xargs -n 1 -I {} bash -c 'expand_in_out {}'
